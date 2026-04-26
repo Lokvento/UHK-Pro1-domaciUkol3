@@ -8,4 +8,6 @@ public class Action
 public long studendtCount;
 @SerializedName("ucitIdno")
 public Long teacherId;
+@SerializedName("denZkr")
+public String dayAbbrev;
 }
