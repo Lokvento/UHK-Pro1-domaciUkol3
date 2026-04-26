@@ -45,4 +45,9 @@ public class WebDataSource implements DataSource {
         var uri=String.format("https://stag-demo.uhk.cz/ws/services/rest2/terminy/getTerminyZkousek?semestr=%s&zkratka=%s&outputFormat=JSON&katedra=%s",semestr, zkratka, katedra);
         return getFromUri(uri);
     }
+    @Override
+    public String getKlasifikacniPrace(String rokObhajoby, String katedra) {
+        var uri=String.format("https://stag-demo.uhk.cz/ws/services/rest2/klasifikacniPrace/getKlasifikacniPrace?rokObhajoby=%s&outputFormat=JSON&katedra=%s",rokObhajoby, katedra);
+        return getFromUri(uri);
+    }
 }
