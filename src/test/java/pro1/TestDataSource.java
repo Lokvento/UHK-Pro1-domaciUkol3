@@ -5,14 +5,12 @@ public class TestDataSource implements DataSource {
     public String getRozvrhByKatedra(String rok, String katedra) {
         return ResourcesUtils.readResourceFile(
                 String.format("testData/getRozvrhByKatedra_%s_%s.json",rok,katedra));
-
     }
 
     @Override
     public String getPredmetyByUcitel(String rok, int ucitIdno, String katedra) {
         return ResourcesUtils.readResourceFile(
                 String.format("testData/getPredmetyByUcitel_%s_%s_%s.json",rok,ucitIdno,katedra));
-
     }
 
     @Override
@@ -25,6 +23,13 @@ public class TestDataSource implements DataSource {
     public String getTerminyZkousek(String semestr, String zkratka, String katedra) {
         return "";
     }
+
+    @Override
+    public String getTerminyZkousek2(String katedra) {
+        return ResourcesUtils.readResourceFile(
+                String.format("testData/getTerminyZkousek_%s.json",katedra));
+    }
+
     @Override
     public String getKvalifikacniPrace(String rokObhajoby, String katedra) {
         return ResourcesUtils.readResourceFile(

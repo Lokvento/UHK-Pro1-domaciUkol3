@@ -55,9 +55,9 @@ public class WebDataSource implements DataSource {
     }
 
     @Override
-    public String getKlasifikacniPrace(String rokObhajoby, String katedra) {
+    public String getKvalifikacniPrace(String rokObhajoby, String katedra) {
         var uri = String.format(
-                "https://stag-demo.uhk.cz/ws/services/rest2/klasifikacniPrace/getKlasifikacniPrace?rokObhajoby=%s&outputFormat=JSON&katedra=%s",
+                "https://stag-demo.uhk.cz/ws/services/rest2/kvalifikacniprace/getKvalifikacniPrace?rokObhajoby=%s&outputFormat=JSON&katedra=%s",
                 rokObhajoby, katedra);
         return getFromUri(uri);
     }

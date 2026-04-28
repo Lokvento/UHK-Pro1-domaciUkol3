@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Thesis {
     @SerializedName("datumZadani")
-    public ApiDate assigmentDate;
+    public ApiDate assignmentDate;
     @SerializedName("datumOdevzdani")
     public ApiDate submissionDate;
 }
