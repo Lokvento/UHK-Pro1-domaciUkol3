@@ -12,13 +12,15 @@ public class ApiDate {
     }
 
     public LocalDate toLocalDate() {
-        if (value == null || value.isEmpty()) return null;{
-            
+        if (value == null || value.isEmpty())
+            return null;
+        {
+
         }
         try {
-         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
-         return LocalDate.parse(value, formatter);
-        }catch (DateTimeParseException e) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
+            return LocalDate.parse(value, formatter);
+        } catch (DateTimeParseException e) {
             return null;
         }
     }

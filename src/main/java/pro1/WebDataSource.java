@@ -9,8 +9,8 @@ import java.net.http.HttpResponse;
 public class WebDataSource implements DataSource {
 
     private static HttpClient client = HttpClient.newBuilder().build();
-    public static String getFromUri(String uri)
-    {
+
+    public static String getFromUri(String uri) {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(uri)).build();
             HttpResponse<String> response = client.send(
@@ -24,30 +24,49 @@ public class WebDataSource implements DataSource {
 
     @Override
     public String getRozvrhByKatedra(String rok, String katedra) {
-        var uri=String.format("https://stag-demo.uhk.cz/ws/services/rest2/rozvrhy/getRozvrhByKatedra?rok=%s&semestr=%s&outputFormat=JSON&katedra=%s",rok, "%25", katedra);
+        var uri = String.format(
+                "https://stag-demo.uhk.cz/ws/services/rest2/rozvrhy/getRozvrhByKatedra?rok=%s&semestr=%s&outputFormat=JSON&katedra=%s",
+                rok, "%25", katedra);
         return getFromUri(uri);
     }
 
     @Override
     public String getPredmetyByUcitel(String rok, int ucitIdno, String katedra) {
-        var uri=String.format("https://stag-demo.uhk.cz/ws/services/rest2/predmety/getPredmetyByUcitel?ucitIdno=%s&outputFormat=JSON&katedra=%s&rok=%s",ucitIdno, katedra, rok);
+        var uri = String.format(
+                "https://stag-demo.uhk.cz/ws/services/rest2/predmety/getPredmetyByUcitel?ucitIdno=%s&outputFormat=JSON&katedra=%s&rok=%s",
+                ucitIdno, katedra, rok);
         return getFromUri(uri);
     }
 
     @Override
     public String getLiteraturaPredmetu(String zkratka, String katedra) {
-        var uri=String.format("https://stag-demo.uhk.cz/ws/services/rest2/predmety/getLiteraturaPredmetu?zkratka=%s&outputFormat=JSON&katedra=%s",zkratka, katedra);
+        var uri = String.format(
+                "https://stag-demo.uhk.cz/ws/services/rest2/predmety/getLiteraturaPredmetu?zkratka=%s&outputFormat=JSON&katedra=%s",
+                zkratka, katedra);
         return getFromUri(uri);
     }
 
     @Override
-    public String getTerminyZkousek( String semestr,String zkratka, String katedra) {
-        var uri=String.format("https://stag-demo.uhk.cz/ws/services/rest2/terminy/getTerminyZkousek?semestr=%s&zkratka=%s&outputFormat=JSON&katedra=%s",semestr, zkratka, katedra);
+    public String getTerminyZkousek(String semestr, String zkratka, String katedra) {
+        var uri = String.format(
+                "https://stag-demo.uhk.cz/ws/services/rest2/terminy/getTerminyZkousek?semestr=%s&zkratka=%s&outputFormat=JSON&katedra=%s",
+                semestr, zkratka, katedra);
         return getFromUri(uri);
     }
+
     @Override
     public String getKlasifikacniPrace(String rokObhajoby, String katedra) {
-        var uri=String.format("https://stag-demo.uhk.cz/ws/services/rest2/klasifikacniPrace/getKlasifikacniPrace?rokObhajoby=%s&outputFormat=JSON&katedra=%s",rokObhajoby, katedra);
+        var uri = String.format(
+                "https://stag-demo.uhk.cz/ws/services/rest2/klasifikacniPrace/getKlasifikacniPrace?rokObhajoby=%s&outputFormat=JSON&katedra=%s",
+                rokObhajoby, katedra);
+        return getFromUri(uri);
+    }
+
+    @Override
+    public String getTerminyZkousek2(String katedra) {
+        var uri = String.format(
+                "https://stag-demo.uhk.cz/ws/services/rest2/terminy/getTerminyZkousek?katedra=%s&outputFormat=JSON",
+                katedra);
         return getFromUri(uri);
     }
 }
