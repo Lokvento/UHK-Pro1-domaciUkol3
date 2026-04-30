@@ -23,10 +23,8 @@ public class ThesisDurationReporting {
                 long totalDays = 0;
                 long validCount = 0;
 
-                // Loop through all theses and calculate the duration
                 if (thesisList != null && thesisList.items != null) {
                     for (var thesis : thesisList.items) {
-                        // Only count theses that have both dates properly filled out
                         if (thesis.assignmentDate != null && thesis.assignmentDate.isValid() &&
                                 thesis.submissionDate != null && thesis.submissionDate.isValid()) {
 
@@ -40,7 +38,6 @@ public class ThesisDurationReporting {
                     }
                 }
 
-                // Calculate the average (round mathematically to the nearest whole number)
                 long averageDuration = validCount > 0 ? Math.round((double) totalDays / validCount) : 0;
                 reportItems.add(new YearDuration(year, averageDuration));
             }
